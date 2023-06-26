@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="card" style="padding: 30px;">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <input type="text" ngModel
+        name="userName"
+        id="userName"
+        placeholder="Enter your username"
+        class="form-control mb-3">
+      <input type="password" ngModel
+        name="userPassword"
+        id="userPassword"
+        placeholder="Enter your password"
+        class="form-control mb-3">
+      <input type="submit" value="Login" class="btn btn-outline-success form-control rounded-0">
+    </form>
+  </div>
+</div>
+  <div></div>
+  <div></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 mt-5">
+        <div *ngIf="badCredentials()" class="alert alert-danger d-flex" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+            <use xlink:href="bootstrap-icons.svg#exclamation-triangle-fill" />
+          </svg>
+          <mat-icon>error</mat-icon>
+          <div class="ms-2">
+            {{ errorMex }}
+          </div>
+
+          <button type="button" class="btn-close" aria-label="Close" (click)="tryAgain()" style="float: left; margin-left: 50%;"></button>
+        </div>
+      </div>
+    </div>
+  </div>

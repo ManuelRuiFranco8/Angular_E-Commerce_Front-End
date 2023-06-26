@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <table align="center">
+    <thead>
+        <tr>
+            <th align="center"> Product Name </th>
+            <th align="center"> Product Vendor </th>
+            <th align="center"> Delete </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{product.name}}</td>
+        <td>{{product.vendor}}</td>
+        <td>
+          <button mat-icon-button color="warn" (click)="deleteProduct(product.name,product.vendor)">
+            <mat-icon> delete </mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--
+  <button mat-icon-button color="primary" (click)="editValue(value)">
+            <mat-icon> edit </mat-icon>
+  </button>
+  <button mat-icon-button color="primary" (click)="showImages(value)">
+            <mat-icon> images </mat-icon>
+  </button>
+-->

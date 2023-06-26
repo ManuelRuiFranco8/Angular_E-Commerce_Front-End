@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="card p-3">
+        <form #productForm="ngForm">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Product Name</mat-label>
+          <input matInput placeholder="Product Name"
+                          [(ngModel)]="product.name"
+                          name="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Product Vendor</mat-label>
+          <input matInput placeholder="Product Vendor"
+                          [(ngModel)]="product.vendor"
+                          name="vendor">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Product Description</mat-label>
+          <input matInput placeholder="Product Description"
+                          [(ngModel)]="product.description"
+                          name="description">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Product Price</mat-label>
+          <input matInput placeholder="Product Price"
+                          [(ngModel)]="product.price"
+                          name="price">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Product Quantity</mat-label>
+          <input matInput placeholder="Product Quantity"
+                          [(ngModel)]="product.quantity"
+                          name="quantity">
+        </mat-form-field>
+
+        <button type="button" class="btn btn-ligth btn-outline-dark text-right" (click)="selectFile.click()">
+            Select Images from File System
+        </button>
+        <span *ngIf="!imagesAssociated()"> {{associatedImages}} </span>
+        <span *ngIf="imagesAssociated()"> No image associated </span>
+        <div>
+          <input type="file" style="display: none" value="select" #selectFile (change)="onFileSelected($event)">
+        </div>
+
+        <div align="end">
+          <button mat-stroked-button color="primary" style="margin-right: 3px;" (click)="clearImages()">Clear Images</button>
+          <button mat-stroked-button color="primary" style="margin-right: 3px;" (click)="clearForm(productForm)">Clear</button>
+          <button type="submit" mat-stroked-button color="primary" (click)="addProduct(productForm)">Add</button>
+        </div>
+      </form>
+  </div>
+</div>
