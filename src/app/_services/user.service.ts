@@ -40,4 +40,8 @@ export class UserService {
   public forUser() { //forUser method redirects to /forUser endpoint of back-end server
     return this.httpClient.get(this.PATH_START+"/forUser", {responseType: 'text'});
   }
+
+  public registerNewUser(userData: any) {
+    return this.httpClient.post(this.PATH_START+"/signIn", userData);
+  }
 }

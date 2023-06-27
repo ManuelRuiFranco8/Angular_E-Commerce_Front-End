@@ -12,6 +12,7 @@ import { ViewProductDetailsComponent } from './view-product-details/view-product
 import { ProductResolverService } from './product-resolver.service';
 import { ImageProcessorComponent } from './image-processor/image-processor.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [ //frontend end-points
   {path:'', component:StartComponent}, //no token-access
@@ -22,7 +23,8 @@ const routes: Routes = [ //frontend end-points
   {path:'addProduct', component:AddProductComponent, canActivate:[AuthGuard], data:{roles:['ADMIN']}}, //token access only administrator
   {path:'updateProduct', component:UpdateProductComponent, canActivate:[AuthGuard], data:{roles:['ADMIN']}, resolve: {product: ProductResolverService}},
   {path:'showAllProducts', component:ShowAllProductsComponent, canActivate:[AuthGuard], data:{roles:['ADMIN', 'USER']}}, //token access only administrator
-  {path: "viewProduct", component: ViewProductDetailsComponent, resolve: {product: ProductResolverService}, data:{roles:['ADMIN', 'USER']}}
+  {path: "viewProduct", component: ViewProductDetailsComponent, resolve: {product: ProductResolverService}, data:{roles:['ADMIN', 'USER']}},
+  {path: "registerNewUser", component: RegisterComponent}
 ];
 
 @NgModule({

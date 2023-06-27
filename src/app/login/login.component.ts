@@ -46,4 +46,8 @@ export class LoginComponent {
     tryAgain() {
       this.errorMex="";
     }
+
+    registerNewUser() {
+      this.router.navigate(['/registerNewUser']);
+    }
 }

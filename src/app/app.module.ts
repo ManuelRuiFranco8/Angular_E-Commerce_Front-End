@@ -32,6 +32,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewProductDetailsComponent } from './view-product-details/view-product-details.component'
 import { ProductResolverService } from './product-resolver.service';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
     ShowImageComponent,
     ViewProductDetailsComponent,
     UpdateProductComponent,
+    RegisterComponent,
   ],
 
   imports: [

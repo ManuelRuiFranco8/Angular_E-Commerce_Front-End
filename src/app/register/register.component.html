@@ -1,0 +1,73 @@
+<div class="container mt-2">
+  <div class="card" style="padding: 10px;">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Username</mat-label>
+        <input matInput
+               ngModel
+               name="username"
+               id="username"
+               placeholder="Username">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>First Name</mat-label>
+        <input matInput
+               ngModel
+               name="first_name"
+               id="first_name"
+               placeholder="First Name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Last Name</mat-label>
+        <input matInput
+               ngModel
+               name="last_name"
+               id="last_name"
+               placeholder="Last Name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Telephone</mat-label>
+        <input matInput
+               ngModel
+               name="telephone"
+               id="telephone"
+               placeholder="Telephone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>E-mail</mat-label>
+        <input matInput
+               ngModel
+               name="email"
+               id="email"
+               placeholder="E-mail">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Address</mat-label>
+        <input matInput
+               ngModel
+               name="address"
+               id="address"
+               placeholder="Address">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Password</mat-label>
+        <input matInput
+               ngModel
+               name="password"
+               id="password"
+               placeholder="Password">
+      </mat-form-field>
+
+      <div class="text-center">
+        <button type="submit" mat-raised-button color="primary">Register</button>
+      </div>
+    </form>
+  </div>
+  <button class="w-20" mat-stroked-button color="primary" style="float: left; margin-left: 94%;" (click)="clearForm(registerForm)">Clear</button>
+</div>
