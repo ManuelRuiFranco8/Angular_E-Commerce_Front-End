@@ -1,5 +1,23 @@
-<div class="container mt-5">
-  <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10">
+<div class="container mt-3">
+  <form #searchKey="ngForm" (ngSubmit)="searchByKeyWord(searchKey.value)" class="search-form">
+    <div class="input-container">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Search Product by namer or vendor</mat-label>
+        <input matInput
+               ngModel
+               name="searchKey"
+               id="searchKey"
+               placeholder="Fetch a product specifying a name or a vendor">
+        </mat-form-field>
+      </div>
+      <button type="submit" mat-raised-button color="primary" class="search-button">Search</button>
+  </form>
+
+  <div class="card text-center mt-3" style="color:darkred; padding: 30px;" *ngIf="noProducts">
+    <h1>{{message2}}</h1>
+  </div>
+
+  <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10" *ngIf="!noProducts">
     <mat-grid-tile *ngFor="let p of productDetails">
       <div class="row p-3">
         <div class="image-container">
@@ -24,6 +42,11 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
+
+  <div class="text-center mt-5" style="padding-bottom:100px;">
+    <button type="button" mat-raised-button color="primary" (click)="loadPreviousPage()" *ngIf="showPrevious">Previous Page</button> &nbsp;
+    <button type="button" mat-raised-button color="primary" (click)="loadNextPage()" *ngIf="showNext">Next Page</button>
+  </div>
   <!--
         <div class="mt-2">
           <p style="white-space: inherit; height: 40px; width:288px; overflow: hidden; text-overflow: ellipsis;">{{p.description}}</p>

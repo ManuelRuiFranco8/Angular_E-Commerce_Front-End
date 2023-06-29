@@ -1,5 +1,23 @@
 <div class="container mt-5">
-  <table align="center">
+  <form #searchKey="ngForm" (ngSubmit)="searchByKeyWord(searchKey.value)" class="search-form">
+    <div class="input-container">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Search Product by namer or vendor</mat-label>
+        <input matInput
+               ngModel
+               name="searchKey"
+               id="searchKey"
+               placeholder="Fetch a product specifying a name or a vendor">
+        </mat-form-field>
+      </div>
+      <button type="submit" mat-raised-button color="primary" class="search-button">Search</button>
+  </form>
+
+  <div class="card text-center mt-3" style="color:darkred; padding: 30px;" *ngIf="noProducts">
+    <h1>{{message}}</h1>
+  </div>
+
+  <table align="center" *ngIf="!noProducts">
     <thead>
         <tr>
             <th align="center"> Product Name </th>
@@ -19,6 +37,11 @@
       </tr>
     </tbody>
   </table>
+
+  <div class="text-center mt-3" style="padding-bottom:100px;">
+    <button type="button" mat-raised-button color="primary" (click)="loadPreviousPage()" *ngIf="showPrevious">Previous Page</button> &nbsp;
+    <button type="button" mat-raised-button color="primary" (click)="loadNextPage()" *ngIf="showNext">Next Page</button>
+  </div>
 </div>
 <!--
   <button mat-icon-button color="primary" (click)="editValue(value)">

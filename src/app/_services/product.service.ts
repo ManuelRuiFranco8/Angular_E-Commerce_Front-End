@@ -20,8 +20,9 @@ export class ProductService {
     return this.HttpClient.put<Product>(this.PATH_START+"/updateProduct?productId="+productId, product);
   }
 
-  public getAllProducts() { //getAllProducts method redirects to /getAllProducts endpoint of back-end server
-    return this.HttpClient.get<Product[]>(this.PATH_START+"/getAllProducts");
+  public getAllProducts(pageNumber: number, searchKey: string="") { //getAllProducts method redirects to /getAllProducts endpoint of back-end server
+    console.log(searchKey);
+    return this.HttpClient.get<any>(this.PATH_START+"/getAllProducts?pageNumber="+pageNumber+"&searchKey="+searchKey);
   }
 
   public getProductDetailsNV(productName: String, productVendor: String) { //getProductDetailsNV method redirects to /getProductDetailsNV endpoint of back-end server
