@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <div class="card p-3">
+    <div class="row">
+
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th> Product </th>
+            <th> Price </th>
+            <th> Quantity </th>
+            <th> Partial Amount </th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let product of orderProducts">
+            <td>{{product.name}}</td>
+            <td>{{product.price}} <mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></td>
+            <td>
+              <form #quantityForm="ngForm" (ngSubmit)="setProductQuantity(product.id, quantityForm)">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Quantity (select enter to finalize)</mat-label>
+                  <input matInput
+                         ngModel
+                         name="quantity"
+                         id="quantity"
+                         placeholder="Specify a quantity for the order (default: 1, max: {{product.quantity}})">
+                </mat-form-field>
+              </form>
+            </td>
+            <td>{{computePartial(product.id, product.price)}} <mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><b> Total Amount: </b></td>
+            <td> {{computeTotal()}} <mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-3">
+        Select desired contact method:
+        <div class="form-check" style="padding-top: 10px">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (click)="assignContactMail()" checked>
+          <label class="form-check-label" for="flexRadioDefault1">
+            E-mail
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (click)="assignContactTelephone()">
+          <label class="form-check-label" for="flexRadioDefault2">
+            Telephone
+          </label>
+        </div>
+      </div>
+
+      <div align="right">
+        <button mat-raised-button color="warn" style="width: 200px;" (click)="placeOrder()"> Place Order </button>
+      </div>
+    </div>
+  </div>
+</div>

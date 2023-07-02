@@ -33,6 +33,8 @@ import { ViewProductDetailsComponent } from './view-product-details/view-product
 import { ProductResolverService } from './product-resolver.service';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { RegisterComponent } from './register/register.component';
+import { BuyProductComponent } from './buy-product/buy-product.component';
+import { OrderProductsResolverService } from './order-products-resolver.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { RegisterComponent } from './register/register.component';
     ViewProductDetailsComponent,
     UpdateProductComponent,
     RegisterComponent,
+    BuyProductComponent,
   ],
 
   imports: [
@@ -76,7 +79,8 @@ import { RegisterComponent } from './register/register.component';
     },
     UserService,
     ProductResolverService,
-    ImageProcessorComponent
+    ImageProcessorComponent,
+    OrderProductsResolverService
   ],
   bootstrap: [AppComponent],
 })

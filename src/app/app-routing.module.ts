@@ -13,6 +13,8 @@ import { ProductResolverService } from './product-resolver.service';
 import { ImageProcessorComponent } from './image-processor/image-processor.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { RegisterComponent } from './register/register.component';
+import { BuyProductComponent } from './buy-product/buy-product.component';
+import { OrderProductsResolverService } from './order-products-resolver.service';
 
 const routes: Routes = [ //frontend end-points
   {path:'', component:StartComponent}, //no token-access
@@ -24,12 +26,13 @@ const routes: Routes = [ //frontend end-points
   {path:'updateProduct', component:UpdateProductComponent, canActivate:[AuthGuard], data:{roles:['ADMIN']}, resolve: {product: ProductResolverService}},
   {path:'showAllProducts', component:ShowAllProductsComponent, canActivate:[AuthGuard], data:{roles:['ADMIN', 'USER']}}, //token access only administrator
   {path: "viewProduct", component: ViewProductDetailsComponent, resolve: {product: ProductResolverService}, data:{roles:['ADMIN', 'USER']}},
-  {path: "registerNewUser", component: RegisterComponent}
+  {path: "registerNewUser", component: RegisterComponent},
+  {path: "buyProduct", component: BuyProductComponent, canActivate:[AuthGuard], data:{roles:['USER']}, resolve: {productOrder: OrderProductsResolverService}}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [ProductResolverService, ImageProcessorComponent]
+  providers: [ProductResolverService, ImageProcessorComponent, OrderProductsResolverService]
 })
 export class AppRoutingModule { }

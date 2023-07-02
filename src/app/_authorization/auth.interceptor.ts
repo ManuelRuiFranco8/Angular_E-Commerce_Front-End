@@ -17,6 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     const token=this.userAuth.getToken();
     req=this.addToken(req, token);
+    console.log(req.body);
     return next.handle(req).pipe( //handling requests subjected to token-based authentication
       catchError(
         (err:HttpErrorResponse):Observable<HttpEvent<any>> => {

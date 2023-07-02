@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../_model/product.model';
+import { OrderRequest } from '../_model/OrderRequest.model';
 
 
 @Injectable({
@@ -35,5 +36,14 @@ export class ProductService {
 
   public deleteProduct(productName: String, productVendor: String) { //remoreProduct method redirects to /remoteProductNV endpoint of back-end server
     return this.HttpClient.delete(this.PATH_START+"/deleteProductNV?productName="+productName+"&productVendor="+productVendor);
+  }
+
+  public getProductsForOrder(singleProduct: boolean, productId: Number) {
+    console.log(this.HttpClient.get<Product[]>(this.PATH_START+"/getProductsForOrder/"+singleProduct+"/"+productId));
+    return this.HttpClient.get<Product[]>(this.PATH_START+"/getProductsForOrder/"+singleProduct+"/"+productId);
+  }
+
+  public placeOrder(request: OrderRequest) {
+    return this.HttpClient.post<String>(this.PATH_START+"/placeOrder", request);
   }
 }

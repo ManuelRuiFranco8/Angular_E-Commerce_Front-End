@@ -3,12 +3,13 @@ import { Product } from '../_model/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductResolverService } from '../product-resolver.service';
 import { UserAuthenticationService } from '../_services/user-authentication.service';
+import { OrderProductsResolverService } from '../order-products-resolver.service';
 
 @Component({
   selector: 'app-view-product-details',
   templateUrl: './view-product-details.component.html',
   styleUrls: ['./view-product-details.component.css'],
-  providers: [ProductResolverService]
+  providers: [ProductResolverService, OrderProductsResolverService]
 })
 export class ViewProductDetailsComponent implements OnInit {
 
@@ -53,6 +54,14 @@ export class ViewProductDetailsComponent implements OnInit {
     if(productId!=null) {
       console.log(productId);
       this.router.navigate(['/updateProduct', {productId: productId}]);
+    }
+  }
+
+  buyProduct(productId: Number | null) {
+    console.log(productId);
+    if(productId!=null) {
+      console.log(productId);
+      this.router.navigate(['/buyProduct', {singleProduct: true, productId: productId}]);
     }
   }
 }
