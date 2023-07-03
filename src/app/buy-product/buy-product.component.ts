@@ -16,10 +16,12 @@ import { NgForm } from '@angular/forms';
 export class BuyProductComponent implements OnInit {
 
   orderProducts: Product[]=[]; //list of products associated to the order
+  shipmentFee: number=2.99;
 
-  request: OrderRequest= {
+  request: OrderRequest={
     productsQuantityList: [],
-    contact:"EMAIL"
+    contact:"EMAIL",
+    shipment:"STANDARD"
   }
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -44,6 +46,18 @@ export class BuyProductComponent implements OnInit {
 
   assignContactTelephone() {
     this.request.contact="TELEPHONE";
+    console.log(this.request);
+  }
+
+  assignShipmentStandard() {
+    this.request.shipment="STANDARD";
+    this.shipmentFee=2.99;
+    console.log(this.request);
+  }
+
+  assignShipmentPremium() {
+    this.request.shipment="PREMIUM";
+    this.shipmentFee=10.99;
     console.log(this.request);
   }
 
@@ -86,6 +100,6 @@ export class BuyProductComponent implements OnInit {
         total=total+(price*productQuantity.quantity);
       }
     );
-    return total;
+    return total+this.shipmentFee;
   }
 }
