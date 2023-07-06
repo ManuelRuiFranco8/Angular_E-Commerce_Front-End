@@ -15,6 +15,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { RegisterComponent } from './register/register.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { OrderProductsResolverService } from './order-products-resolver.service';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [ //frontend end-points
   {path:'', component:StartComponent}, //no token-access
@@ -27,7 +28,8 @@ const routes: Routes = [ //frontend end-points
   {path:'showAllProducts', component:ShowAllProductsComponent, canActivate:[AuthGuard], data:{roles:['ADMIN', 'USER']}}, //token access only administrator
   {path: "viewProduct", component: ViewProductDetailsComponent, resolve: {product: ProductResolverService}, data:{roles:['ADMIN', 'USER']}},
   {path: "registerNewUser", component: RegisterComponent},
-  {path: "buyProduct", component: BuyProductComponent, canActivate:[AuthGuard], data:{roles:['USER']}, resolve: {productOrder: OrderProductsResolverService}}
+  {path: "buyProduct", component: BuyProductComponent, canActivate:[AuthGuard], data:{roles:['USER']}, resolve: {productOrder: OrderProductsResolverService}},
+  {path: "userCart", component: CartComponent, canActivate:[AuthGuard], data:{roles:['USER']}}
 ];
 
 @NgModule({

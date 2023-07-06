@@ -17,6 +17,7 @@ export class BuyProductComponent implements OnInit {
 
   orderProducts: Product[]=[]; //list of products associated to the order
   shipmentFee: number=2.99;
+  singleProduct: boolean=true;
 
   request: OrderRequest={
     productsQuantityList: [],
@@ -32,10 +33,16 @@ export class BuyProductComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
       console.log(data);
-      console.log(data.productOrder);
-      this.orderProducts = data.productOrder;
+      this.orderProducts=data.productOrder;
       console.log(this.orderProducts);
-      this.orderProducts.forEach((x) =>this.request.productsQuantityList.push({ productId: x.id, quantity: 1 }));
+      console.log(this.orderProducts.length);
+      if(this.orderProducts.length==1) {
+        this.singleProduct=true;
+      } else if(this.orderProducts.length>1) {
+        this.singleProduct=false;
+      }
+      console.log(this.singleProduct);
+      this.orderProducts.forEach((x)=>this.request.productsQuantityList.push({ productId: x.id, quantity: 1 }));
       console.log(this.request);});
   }
 
@@ -62,7 +69,7 @@ export class BuyProductComponent implements OnInit {
   }
 
   public placeOrder() {
-    this.productServ.placeOrder(this.request).subscribe(
+    this.productServ.placeOrder(this.request, this.singleProduct).subscribe(
       (resp)=> {
         console.log(resp);
         alert("Order successfully placed");
@@ -90,7 +97,7 @@ export class BuyProductComponent implements OnInit {
   computePartial(productId: Number | null, productPrice: number) {
     const product=this.request.productsQuantityList.filter(
       (productQuantity)=>productQuantity.productId===productId);
-    return product[0].quantity*productPrice;
+    return (product[0].quantity*productPrice).toFixed(2);
   }
 
   computeTotal() {
@@ -100,6 +107,9 @@ export class BuyProductComponent implements OnInit {
         total=total+(price*productQuantity.quantity);
       }
     );
-    return total+this.shipmentFee;
+    return (total+this.shipmentFee).toFixed(2);
   }
 }
+
+
+

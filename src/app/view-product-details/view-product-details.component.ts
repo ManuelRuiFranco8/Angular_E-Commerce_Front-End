@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductResolverService } from '../product-resolver.service';
 import { UserAuthenticationService } from '../_services/user-authentication.service';
 import { OrderProductsResolverService } from '../order-products-resolver.service';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-view-product-details',
@@ -26,7 +27,8 @@ export class ViewProductDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private userAuth: UserAuthenticationService,
-              private router: Router) {}
+              private router: Router,
+              private productServ: ProductService) {}
 
   ngOnInit(): void {
     this.product=this.activatedRoute.snapshot.data['product'];
@@ -62,6 +64,21 @@ export class ViewProductDetailsComponent implements OnInit {
     if(productId!=null) {
       console.log(productId);
       this.router.navigate(['/buyProduct', {singleProduct: true, productId: productId}]);
+    }
+  }
+
+  addToCart(productId: Number | null) {
+    console.log(productId);
+    if(productId!=null) {
+      console.log(productId);
+      this.productServ.addToCart(productId).subscribe(
+        (response)=>{
+          console.log(response);
+          alert("Product successfully added to your cart!");
+        }, (error)=> {
+          console.log(error);
+          alert("Procedural error: impossible to add product to your cart!");
+        });
     }
   }
 }

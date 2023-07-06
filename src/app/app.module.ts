@@ -35,6 +35,7 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { RegisterComponent } from './register/register.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { OrderProductsResolverService } from './order-products-resolver.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { OrderProductsResolverService } from './order-products-resolver.service'
     UpdateProductComponent,
     RegisterComponent,
     BuyProductComponent,
+    CartComponent,
   ],
 
   imports: [

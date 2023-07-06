@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <table align="center">
+    <thead>
+        <tr>
+            <th align="center"> Product Name </th>
+            <th align="center"> Product Vendor </th>
+            <th align="center"> Price </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let productInCart of cart">
+        <td><a class="underline-text" (click)="showProductDetails(productInCart.product.id)">{{productInCart.product.name}}</a></td>
+        <td>{{productInCart.product.vendor}}</td>
+        <td>{{productInCart.product.price}} &nbsp;<mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div align="right" class="mt-3" *ngIf="productsPresent">
+    <button (click)="checkout()" color="primary" mat-raised-button> Checkout </button>
+  </div>
+
+  <div class="card text-center mt-3" style="color:darkred; padding: 30px;" *ngIf="!productsPresent">
+    <h1>No products are currently present in your cart</h1>
+  </div>
+</div>

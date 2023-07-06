@@ -39,11 +39,20 @@ export class ProductService {
   }
 
   public getProductsForOrder(singleProduct: boolean, productId: Number) {
-    console.log(this.HttpClient.get<Product[]>(this.PATH_START+"/getProductsForOrder/"+singleProduct+"/"+productId));
+    console.log(singleProduct);
+    console.log(productId);
     return this.HttpClient.get<Product[]>(this.PATH_START+"/getProductsForOrder/"+singleProduct+"/"+productId);
   }
 
-  public placeOrder(request: OrderRequest) {
-    return this.HttpClient.post<String>(this.PATH_START+"/placeOrder", request);
+  public placeOrder(request: OrderRequest, singleProduct: boolean) {
+    return this.HttpClient.post<String>(this.PATH_START+"/placeOrder/"+singleProduct, request);
+  }
+
+  public addToCart(productId: Number) {
+    return this.HttpClient.post(this.PATH_START+"/addToCart/"+productId,"");
+  }
+
+  public getCartDetails() {
+    return this.HttpClient.get(this.PATH_START+"/getCartDetails")
   }
 }
