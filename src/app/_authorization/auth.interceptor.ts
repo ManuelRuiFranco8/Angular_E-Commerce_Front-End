@@ -22,12 +22,13 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError(
         (err:HttpErrorResponse):Observable<HttpEvent<any>> => {
           console.log(err.status);
+          console.log(err);
           if(err.status===401) {
             this.router.navigate(['/login']); //redirects to login page
           } else if(err.status===403) {
             this.router.navigate(['/forbidden']); //redirects to forbidden page
           }
-          return throwError("Server is not working properly") as Observable<HttpEvent<any>>;
+          return throwError(err.error) as Observable<HttpEvent<HttpErrorResponse>>;
         }
       )
     );

@@ -53,14 +53,8 @@ export class AddProductComponent implements OnInit {
         //this.showCustomMessage("Product successfully added from the database");
       },
       (err)=>{
-        const status=err.status;
-        console.log(JSON.stringify(err.status));
-        console.log("err" + err);
-        if(status==409) {
-          alert('Conflict! This product is already present in the database.')
-        } else {
-          alert("Incorrect data. Impossible to add the product to the database.");
-        }
+        console.log(err);
+        alert(err);
       }
     );
   }

@@ -31,14 +31,19 @@ export class BuyProductComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let productId=0;
+    this.activatedRoute.paramMap.subscribe(params => {
+      productId=Number(params.get('productId'));
+      console.log(productId);
+    });
     this.activatedRoute.data.subscribe((data: any) => {
       console.log(data);
       this.orderProducts=data.productOrder;
       console.log(this.orderProducts);
       console.log(this.orderProducts.length);
-      if(this.orderProducts.length==1) {
+      if(this.orderProducts.length==1 && productId!=0) {
         this.singleProduct=true;
-      } else if(this.orderProducts.length>1) {
+      } else {
         this.singleProduct=false;
       }
       console.log(this.singleProduct);

@@ -36,6 +36,8 @@ import { RegisterComponent } from './register/register.component';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { OrderProductsResolverService } from './order-products-resolver.service';
 import { CartComponent } from './cart/cart.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { CartComponent } from './cart/cart.component';
     RegisterComponent,
     BuyProductComponent,
     CartComponent,
+    UserOrdersComponent,
   ],
 
   imports: [
@@ -71,7 +74,8 @@ import { CartComponent } from './cart/cart.component';
     MatIconModule,
     MatDialogModule,
     MatGridListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonToggleModule
   ],
   providers: [
     AuthGuard, {

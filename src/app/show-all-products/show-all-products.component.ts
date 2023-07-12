@@ -4,7 +4,6 @@ import { ProductService } from '../_services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CdkColumnDef } from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material/table';
-import { CompactProduct } from '../_model/CompactProduct.model';
 import { map } from 'rxjs';
 
 

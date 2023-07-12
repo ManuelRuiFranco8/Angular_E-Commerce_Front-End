@@ -45,13 +45,20 @@ export class CartComponent implements OnInit {
 
   checkout() {
     this.router.navigate(['/buyProduct', {singleProduct: false, productId:0}]);
-    /*
-    this.serv.getProductsForOrder(false, 0).subscribe(
-      (response)=> {
-        console.log(response);
-      }, (error: any) => {
-        console.log(error);
-      });
-    */
+  }
+
+  deleteCartItem(cartId: Number | null) {
+    if(cartId) {
+      console.log(cartId);
+      this.serv.removeProduct(cartId).subscribe(
+        (resp)=>{
+          console.log(resp);
+          alert("Selected product has been removed from your cart");
+          this.getCartProducts();
+        }, (err)=>{
+          console.log(err);
+          alert("Server error. It was not possible to remove the product")
+        });
+    }
   }
 }

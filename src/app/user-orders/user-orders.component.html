@@ -1,0 +1,44 @@
+<div class="container mt-5">
+
+  <mat-button-toggle-group aria-label="Font Style" align="right " style="float: left; margin-left: 85%;" class="mb-3">
+    <mat-button-toggle value="ALL" (click)="getOrdersList('ALL')">All</mat-button-toggle>
+    <mat-button-toggle value="PLACED" (click)="getOrdersList('PLACED')">Placed</mat-button-toggle>
+    <mat-button-toggle value="RECEIVED" (click)="getOrdersList('RECEIVED')">Received</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <table align="center" class="mt-3">
+    <thead>
+        <tr>
+            <th align="center"> Order Code </th>
+            <th align="center"> Product </th>
+            <th align="center"> Shipment Address </th>
+            <th align="center"> Specified Contact </th>
+            <th align="center"> Issuing Date </th>
+            <th align="center"> Shipment Date </th>
+            <th align="center"> Amount </th>
+            <th align="center"> Status </th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of myOrders">
+        <td>{{order.id+"-"+order.buyingUser.id+"-"+order.boughtProduct.id}}</td>
+        <td>{{order.boughtProduct.name+"-"+order.boughtProduct.vendor}}</td>
+        <td>{{order.shipmentAddress}}</td>
+        <td>{{order.contact}}</td>
+        <td>{{formatDate(order.date)}}</td>
+        <td>
+          <div *ngIf="order.shipmentDate">{{formatDate(order.shipmentDate)}}</div>
+          <div *ngIf="order.shipmentDate==null">PIPPO BAUDO</div>
+        </td>
+        <td>{{order.amount.toFixed(2)}} &nbsp;<mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></td>
+        <td>{{order.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card text-center mt-3" style="color:darkred; padding: 30px;" *ngIf="!ordersPresent">
+    <h1>You have no orders. Buy something!</h1>
+  </div>
+
+  <!---->
+</div>

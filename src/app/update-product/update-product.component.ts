@@ -64,7 +64,9 @@ export class UpdateProductComponent {
           customAlert('Product details successfully updated');
           this.router.navigate(['/viewProduct', {productId: this.product.id}]);
         },
-        (err)=>{alert('Incorrect Data. Impossible to updated product details');}
+        (err)=>{
+          console.log(err);
+          alert(err);}
       );
     }
   }

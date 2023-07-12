@@ -77,7 +77,7 @@ export class ViewProductDetailsComponent implements OnInit {
           alert("Product successfully added to your cart!");
         }, (error)=> {
           console.log(error);
-          alert("Procedural error: impossible to add product to your cart!");
+          alert(error);
         });
     }
   }

@@ -28,8 +28,11 @@
           <div style="padding-bottom: 8px">Product Description:</div>
           <div>{{product.description}}</div>
         </div>
-        <div class="mt-3" style="float: left; margin-left: 60%;">
-          <b>Price: {{product.price}} <mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></b> &nbsp; <b>Quantity: {{product.quantity}}</b>
+        <div class="mt-3" style="float: left; margin-left: 70%;">
+          <b>Price: {{product.price}} <mat-icon style="font-size: 18px; vertical-align: middle;">euro_symbol</mat-icon></b>
+        </div>
+        <div class="mt-3" style="float: left; margin-left: 70%;">
+          <b>Quantity: {{product.quantity}}</b>
         </div>
         <div class="mt-3 text-center" *ngIf="isUser()" style="float: left; margin-left: 65%;">
           <button mat-raised-button color="warn" style="width: 200px;" (click)="buyProduct(product.id)"> Buy </button> &nbsp;

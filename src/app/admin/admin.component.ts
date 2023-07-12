@@ -43,7 +43,8 @@ export class AdminComponent implements OnInit {
         console.log(response);
         this.message=response; //assigns to the message to be displayed the response from the /forAdmin endpoint
       },
-      (error)=>{console.log(error);}
+      (error)=>{
+        console.log(error);}
     );
   }
 
@@ -76,7 +77,9 @@ export class AdminComponent implements OnInit {
           this.productDetails=response; //fetches a list of all products from the database
           console.log(this.productDetails);
         }
-      }, (error: HttpErrorResponse)=>{console.log(error);}
+      }, (error: HttpErrorResponse)=>{
+        console.log(error);
+      }
     );
   }
 
